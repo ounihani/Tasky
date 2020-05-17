@@ -43,7 +43,7 @@ app.get('/', function (req, res) {
 
 
 const taskRoutes = require('./routes/taskRoutes');
-app.use('/api/tasks',taskRoutes);
+app.use('/api',taskRoutes);
   app.use(cors);
   //listening to the server 
   const PORT = process.env.PORT || 5000;

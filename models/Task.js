@@ -7,7 +7,8 @@ let TaskSchema = mongoose.Schema({
   },
   isDone: {
     type: Boolean,
-    required: true
+    required: true,
+    default : false
   },
   candidate_email: {
     type: String,
