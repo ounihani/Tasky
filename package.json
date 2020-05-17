@@ -1,0 +1,24 @@
+{
+  "name": "tasky",
+  "version": "1.0.0",
+  "description": "This is a task management backend app made for a technicall test for recruiting frontend developers",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "nodemon app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ounihani/Tasky.git"
+  },
+  "author": "Heni",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ounihani/Tasky/issues"
+  },
+  "homepage": "https://github.com/ounihani/Tasky#readme",
+  "dependencies": {
+    "mongoose": "^5.9.14",
+    "nodemon": "^2.0.4"
+  }
+}
