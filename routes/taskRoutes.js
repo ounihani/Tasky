@@ -93,6 +93,41 @@ router.post('/task', (req,res)=>{
 });
 
 
+/**
+ * @swagger
+ * /task:
+ *   patch:
+ *     description: This changes the status of a task. If the task is checked it changes it's status to unchecked and vice-versa 
+ *     tags: [Tasks]
+ *     consumes:
+ *       - application/json
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - in: body
+ *         description: Body of the request
+ *         required: true
+ *         type: json
+ *         schema:
+ *          required:
+ *              - task_id
+ *          properties: 
+ *           task_id:
+ *              type: string
+ *              required: true
+ *              description: The id of the task that will be changed
+ *     responses:
+ *       200:
+ *         description: Task status is changed
+ *       400:
+ *         description: the id of the task needs to be specified
+ *       404:
+ *         description: Task Not Found!
+ *       500:
+ *         description: Task is not saved to the database
+ *       
+ */
+
 router.patch('/check_task', (req,res)=>{
     console.log("checking/unchecking a task...");
     if(!req.body.task_id){
@@ -137,7 +172,8 @@ router.patch('/check_task', (req,res)=>{
 });
 
 
-router.get('/tasks', (res,req)=>{
+router.get('/tasks', (req,res)=>{
+
 
 });
 
