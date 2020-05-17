@@ -208,7 +208,7 @@ router.patch('/check_task', (req, res) => {
  *              description: This is required so candidates won't mess up each other's tasks
  *     responses:
  *       200:
- *         description: Task status is changed
+ *         description: returns an array of tasks
  *       400:
  *         description: No email or email was not sent appropriately
  *       401:
