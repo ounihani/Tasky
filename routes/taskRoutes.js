@@ -13,7 +13,7 @@ const Task = require('../models/Task');
 
 /**
  * @swagger
- * /Task:
+ * /task:
  *   post:
  *     description: This creates a task for a user 
  *     tags: [Tasks]
@@ -26,15 +26,29 @@ const Task = require('../models/Task');
  *         description: Body of the request
  *         required: true
  *         type: json
+ *         schema:
+ *          required:
+ *              - candidate_email
+ *              - label
+ *          properties: 
+ *           candidate_email:
+ *              type: string
+ *              required: true
+ *              description: This is required so candidates won't mess up each other's tasks
+ *           label:
+ *              type: string
+ *              required: true
+ *              description: Name of the task
  *     responses:
  *       200:
- *         description: created sucessfully
- *       422:
- *         description: Validation error. Just show the "msg" field to the Task to make it clear  
- *       410:
- *         description: Task was not saved to the database  
- *       411:
- *         description: password hashing error  
+ *         description: Task is created
+ *       400:
+ *         No email or email was not sent appropriately
+ *       401:
+ *         description: Task label is required
+ *       500:
+ *         description: Task is not saved to the database
+ *       
  */
 
 router.post('/task', (req,res)=>{
