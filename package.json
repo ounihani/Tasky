@@ -20,6 +20,11 @@
   "homepage": "https://github.com/ounihani/Tasky#readme",
   "dependencies": {
     "mongoose": "^5.9.14",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "express":"*",
+    "body-parser":"*",
+    "cors":"*",
+    "swagger-jsdoc":"*",
+    "swagger-ui-express":"*"
   }
 }
