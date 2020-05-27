@@ -129,9 +129,9 @@ router.post('/task', (req, res) => {
  *       
  */
 
-router.patch('/check_task', (req, res) => {
+router.patch('/check_task/:task_id', (req, res) => {
     console.log("checking/unchecking a task...");
-    if (!req.body.task_id) {
+    if (!req.params.task_id) {
         return res.status(400).json({
             sucess: false,
             message: "You have to specify the id of the task to check"
@@ -139,7 +139,7 @@ router.patch('/check_task', (req, res) => {
     } else {
 
         let task = Task.findOne({
-            _id: req.body.task_id
+            _id: req.params.task_id
         }, (err, task) => {
             if (err) {
                 return res.status(405).json({
