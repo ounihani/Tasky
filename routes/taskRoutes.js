@@ -189,23 +189,16 @@ router.patch('/check_task', (req, res) => {
  *     produces:
  *       - application/json
  *     parameters:
- *       - in: body
- *         description: Body of the request
+ *       - in: query
+ *         name: checked
+ *         description: this is made to specify which kind of tasks to retrieve
  *         required: true
- *         type: json
- *         schema:
- *          required:
- *              - checked
- *              - candidate_email
- *          properties: 
- *           checked:
- *              type: boolean
- *              required: true
- *              description: this is made to specify which kind of posts to retrieve
- *           candidate_email:
- *              type: string
- *              required: true
- *              description: This is required so candidates won't mess up each other's tasks
+ *         type: boolean
+ *       - in: query
+ *         name: email
+ *         description: This is required so candidates won't mess up each other's tasks
+ *         required: true
+ *         type: string
  *     responses:
  *       200:
  *         description: returns an array of tasks
@@ -220,20 +213,20 @@ router.patch('/check_task', (req, res) => {
 
 router.get('/tasks', (req, res) => {
     console.log("getting tasks...");
-    if (!req.body.candidate_email) {
+    if (!req.query.candidate_email) {
         return res.status(400).json({
-            sucess: true,
+            sucess: false,
             message: "No email or email was not sent appropriately"
         });
-    } else if (req.body.checked == undefined || req.body.checked == null){
+    } else if (req.query.checked == undefined || req.query.checked == null){
         return res.status(401).json({
             sucess: false,
             message: "You have to specify which kind of tasks you want to get"
         });
     } else {
         let task = Task.find({
-            candidate_email: req.body.candidate_email,
-            isDone: req.body.checked
+            candidate_email: req.query.candidate_email,
+            isDone: req.query.checked
         }, (err, tasks) => {
             if (err) return res.status(500).json({
                 sucess: false,
