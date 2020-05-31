@@ -94,7 +94,7 @@ router.post('/task', (req, res) => {
 
 /**
  * @swagger
- * /task:
+ * /check_task/{task_id}:
  *   patch:
  *     description: This changes the status of a task. If the task is checked it changes it's status to unchecked and vice-versa 
  *     tags: [Tasks]
@@ -103,18 +103,12 @@ router.post('/task', (req, res) => {
  *     produces:
  *       - application/json
  *     parameters:
- *       - in: body
- *         description: Body of the request
+ *       - in: path
+ *         description: The id of the task that will be changed ( checked or unchecked)
  *         required: true
- *         type: json
- *         schema:
- *          required:
- *              - task_id
- *          properties: 
- *           task_id:
- *              type: string
- *              required: true
- *              description: The id of the task that will be changed
+ *         name: task_id
+ *         schema: 
+ *          type: string
  *     responses:
  *       200:
  *         description: Task status is changed
