@@ -195,7 +195,7 @@ router.patch('/check_task/:task_id', (req, res) => {
  *         required: true
  *         type: boolean
  *       - in: query
- *         name: email
+ *         name: candidate_email
  *         description: This is required so candidates won't mess up each other's tasks
  *         required: true
  *         type: string
